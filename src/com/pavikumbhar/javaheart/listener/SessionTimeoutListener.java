@@ -10,16 +10,19 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  * @author Pravin Kumbhar
  */
 public class SessionTimeoutListener implements HttpSessionListener {
-
+	private static final Logger logger = LoggerFactory.getLogger(SessionTimeoutListener.class);
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
 
-        System.out.println("sessionCreated - add one session into counter");
+    	logger.debug("sessionCreated - add one session into counter");
     }
 
     @Override

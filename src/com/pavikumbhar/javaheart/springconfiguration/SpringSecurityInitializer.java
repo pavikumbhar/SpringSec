@@ -5,12 +5,14 @@
  */
 package com.pavikumbhar.javaheart.springconfiguration;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 /**
  *
  * @author pravinkumbhar
  */
+@Order(2)
 public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
  
    // Do nothing

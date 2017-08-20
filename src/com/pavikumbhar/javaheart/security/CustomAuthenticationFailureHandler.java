@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.soap.MessageFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -32,6 +34,7 @@ import org.springframework.web.servlet.LocaleResolver;
 @Component("authenticationFailureHandler")
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
+	 private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private MessageSource messages;
 
@@ -63,10 +66,10 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         
 
        String errorMessage = messages.getMessage("message.badCredentials", null, locale);
-        System.out.println("errorMessage  " + errorMessage);
-        System.out.println("exception >>>>>>  " + exception.getClass().getName());
-        System.out.println("exception.getMessage() >>>>>>  " + exception.getMessage());
-          System.out.println("exception >>>>>>  " + (exception instanceof org.springframework.security.core.userdetails.UsernameNotFoundException));
+       logger.debug("errorMessage  " + errorMessage);
+       logger.debug("exception [] " + exception.getClass().getName());
+       logger.debug("exception.getMessage() []  " + exception.getMessage());
+       logger.debug("exception []  " + (exception instanceof org.springframework.security.core.userdetails.UsernameNotFoundException));
 
           
         if (exception.getMessage() != null) {

@@ -6,24 +6,28 @@
 package com.pavikumbhar.javaheart.listener;
 
 
-import com.pavikumbhar.javaheart.version.ApplicationVersion;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.pavikumbhar.javaheart.version.ApplicationVersion;
 
 /**
  *
  * @author Pravin Kumbhar
  */
 public class ApplicationVersionListener implements ServletContextListener {
-
+	private static final Logger logger = LoggerFactory.getLogger(ApplicationVersionListener.class);
     @Override
     public void contextDestroyed(ServletContextEvent arg0) {
-        System.out.println("Stopped-" + ApplicationVersion.getversion());
+    	logger.debug("Stopped-" + ApplicationVersion.getversion());
     }
 
     @Override
     public void contextInitialized(ServletContextEvent arg0) {
-        System.out.println("Started-" + ApplicationVersion.getversion());
+    	logger.debug("Started-" + ApplicationVersion.getversion());
     }
 
 }

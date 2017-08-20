@@ -2,21 +2,14 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="home"><img src="${pageContext.request.contextPath}/resources/img/iconmonstr-debit-5-icon-256.png" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Payment Gateway Converter</h5>
-              	  	
+<!--              
+              	  <p class="centered"><a href="profile.html"><img src="resources/img/ussetsi-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered">Pravin Kumbhar</h5>
+              	  	-->
                   <li class="mt">
-                      <a  class="" href="home">
+                      <a  class="active" href="index.html">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
-                      </a>
-                  </li>
-                  
-                  <li class="">
-                      <a  class="" href="holiday">
-                          <i class="fa fa-calendar-o"></i>
-                          <span>Holiday Calender</span>
                       </a>
                   </li>
 

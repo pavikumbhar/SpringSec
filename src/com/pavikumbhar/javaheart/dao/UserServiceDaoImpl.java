@@ -5,10 +5,13 @@
  */
 package com.pavikumbhar.javaheart.dao;
 
-import com.pavikumbhar.javaheart.entity.User;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.pavikumbhar.javaheart.entity.User;
 
 /**
  *
@@ -16,7 +19,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserServiceDaoImpl implements UserServiceDao {
-
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceDaoImpl.class);
+	
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -27,7 +31,7 @@ public class UserServiceDaoImpl implements UserServiceDao {
 
     @Override
     public User findByUsername(String username) {
-        System.err.println(">>>>>>>>>>>>>>>>>>"+username);
+    	logger.debug("findByUsername"+username);
         
      return (User)sessionFactory.getCurrentSession().createQuery("FROM  User  where username  =:username")
                                           .setString("username", username)

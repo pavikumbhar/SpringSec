@@ -5,6 +5,8 @@
  */
 package com.pavikumbhar.javaheart.springconfiguration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -13,13 +15,13 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author pravinkumbhar
+ * @author pavikumbhar
  */
 
 @Component
 public class ContextRefreshedEventHandler implements ApplicationListener<ContextRefreshedEvent> {
 
-    
+	private static final Logger logger = LoggerFactory.getLogger(ContextRefreshedEventHandler.class);
      @Autowired
     private Environment environment;
 
@@ -29,7 +31,7 @@ public class ContextRefreshedEventHandler implements ApplicationListener<Context
         
          String applicationName = contextRefreshedEvent.getApplicationContext().getApplicationName();
          String version = environment.getProperty("application.version");
-       System.out.println("[################ [Started-"+applicationName +" " +version+" version] ###########]" );
+         logger.debug("[################ [Started-"+applicationName +" " +version+" version] ###########]" );
        
     }
 

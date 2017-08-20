@@ -33,7 +33,6 @@ import com.pavikumbhar.javaheart.service.UserService;
  *
  * @author pravinkumbhar
  */
-
 @Component("authenticationSuccessHandler")
 public class CustomSimpleUrlAuthenticationSuccessHandler   implements AuthenticationSuccessHandler {
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -118,13 +117,14 @@ public class CustomSimpleUrlAuthenticationSuccessHandler   implements Authentica
     
     
     public boolean isPasswordExpired(String username){
-    	  boolean passwordExpired=false;
+    	  
+    	 boolean passwordExpired=false;
     	  int minimumPasswordAge =30;//Days
           Date today;
 		  Date passwordModifiedDate = userService.findByUsername(username).getPasswordModifiedDate();
 		  today = Calendar.getInstance().getTime();
-          System.out.println(" passwordModifiedDate =" + passwordModifiedDate + "  -- today =" + today);
-          System.out.println("Minimum Password Age == " + minimumPasswordAge + " << Difference >>>> " + ((today.getTime() - passwordModifiedDate.getTime()) / (1000 * 60 * 60 * 24)));
+		  logger.debug(" passwordModifiedDate =" + passwordModifiedDate + "  -- today =" + today);
+		  logger.debug(" Minimum Password Age == " + minimumPasswordAge + " << Difference >>>> " + ((today.getTime() - passwordModifiedDate.getTime()) / (1000 * 60 * 60 * 24)));
           long DATE_DIFFER = (today.getTime() - passwordModifiedDate.getTime()) / (1000 * 60 * 60 * 24);
 
           if (DATE_DIFFER >= minimumPasswordAge){

@@ -1,34 +1,38 @@
 package com.pavikumbhar.javaheart.springconfiguration;
 
-import com.pavikumbhar.javaheart.filter.CorsFilter;
-import com.pavikumbhar.javaheart.listener.ApplicationVersionListener;
-import com.pavikumbhar.javaheart.listener.SessionTimeoutListener;
-
 import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import com.pavikumbhar.javaheart.filter.CorsFilter;
+import com.pavikumbhar.javaheart.listener.ApplicationVersionListener;
+import com.pavikumbhar.javaheart.listener.SessionTimeoutListener;
 
 /**
  *
  * @author Pravin Kumbhar
  */
-
+@Order(1)
 public class ApplicationWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(ApplicationWebInitializer.class);
     
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{AppConfig.class,AppSecurityConfig.class};
+        return new Class[]{WebAppConfig.class,AppConfig.class,AppSecurityConfig.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{WebAppConfig.class};
+        return new Class[]{};
     }
 
     @Override
@@ -50,7 +54,7 @@ public class ApplicationWebInitializer extends AbstractAnnotationConfigDispatche
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-         System.out.println("***** Initializing Application for " + servletContext.getServerInfo() + " *****");
+    	logger.debug("***** Initializing Application for " + servletContext.getServerInfo() + " *****");
         super.onStartup(servletContext);
         servletContext.addListener(new ApplicationVersionListener());
         servletContext.addListener(new SessionTimeoutListener());

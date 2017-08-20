@@ -5,12 +5,11 @@
 <tiles-definitions>
 
 	<definition name="home" extends="DefaultTemplate">
-	    <put-attribute name="body"	value="/WEB-INF/views/home.jsp" />
+	    <put-attribute name="body"	value="/WEB-INF/views/index.jsp" />
 	</definition>
 
-	<definition name="holiday" extends="DefaultTemplate">
-            <put-attribute name="title" 	value="Holiday" />
-	    <put-attribute name="body"	value="/WEB-INF/views/holiday.jsp" />
+	<definition name="personList" extends="DefaultTemplate">
+	    <put-attribute name="body"	value="/WEB-INF/views/personList.jsp" />
 	</definition>
 	
 </tiles-definitions>

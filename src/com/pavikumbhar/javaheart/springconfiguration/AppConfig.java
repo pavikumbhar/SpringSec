@@ -6,9 +6,13 @@
 package com.pavikumbhar.javaheart.springconfiguration;
 
 import java.util.Properties;
+
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -34,6 +38,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySources(value = { @PropertySource(value = "classpath:persistence.properties")})
 public class AppConfig {
 
+	private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
+	
+	
     @Autowired
     private Environment environment;
 
@@ -48,8 +55,8 @@ public class AppConfig {
             System.out.println("No Spring profile configured, running with default configuration.");
         } else {
             for (String profile : environment.getActiveProfiles()) {
-                System.out.println("Detected Spring profile: {}" + profile);
-                System.out.println("Developed By #######################[Pavi Kumbhar] #######################");
+            	logger.debug("Detected Spring profile: {}" + profile);
+            	logger.debug("Developed By #######################[Pavi Kumbhar] #######################");
             }
         }
     }

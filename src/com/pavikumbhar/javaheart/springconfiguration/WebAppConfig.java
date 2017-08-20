@@ -6,6 +6,7 @@
 package com.pavikumbhar.javaheart.springconfiguration;
 
 import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +15,8 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
@@ -44,7 +45,6 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
                 includeFilters = { @Filter(org.springframework.stereotype.Controller.class)}) 
  @PropertySources(value = {
                           @PropertySource(value = "classpath:application.properties"),
-                         // @PropertySource(value = "classpath:filelocation.properties"),
                           @PropertySource(value = "classpath:persistence.properties"),
                           @PropertySource(value = "classpath:email.properties")
                          })
@@ -96,9 +96,10 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
      *
      */
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    	  registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
+   	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+   		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+   		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+       }
   
     /*
      * Configure MessageSource to provide internationalized messages

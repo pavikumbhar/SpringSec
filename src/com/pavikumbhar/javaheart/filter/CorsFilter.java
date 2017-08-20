@@ -8,7 +8,7 @@ package com.pavikumbhar.javaheart.filter;
  
 
 import java.io.IOException;
- 
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,7 +16,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * 
@@ -25,7 +28,7 @@ import org.apache.log4j.Logger;
  */
 public class CorsFilter implements Filter {
 
-   final static Logger logger = Logger.getLogger(CorsFilter.class);
+	private static final Logger logger = LoggerFactory.getLogger(CorsFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

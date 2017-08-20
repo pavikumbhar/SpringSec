@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="Pravin Kumbhar">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"/>
-
+    <meta http-equiv="refresh" content="<%=session.getMaxInactiveInterval()%>;url=login"/>
     <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
     <!-- Bootstrap core CSS -->
@@ -26,36 +26,12 @@
     <!-- Custom styles for this template -->
     <link href="resources/css/style.css" rel="stylesheet">
     <link href="resources/css/style-responsive.css" rel="stylesheet">
-    <link href="resources/css/code.jquery.com_ui_1.10.3_themes_excite-bike_jquery-ui.css" rel="stylesheet" type="text/css"/>
-    <link href="http://code.jquery.com/ui/1.9.1/themes/excite-bike/jquery-ui.css" rel="stylesheet" type="text/css"/>
-   
-   
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.ui.touch-punch.min.js"></script>
-    <script class="include" type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.scrollTo.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/resources/css/code.jquery.com_ui_1.10.4_jquery-ui.js" type="text/javascript"></script>
-    
-    
-     <link type="text/css" href="${pageContext.request.contextPath}/resources/gentleSelect/jquery-gentleSelect.css" rel="stylesheet" />
-     <link type="text/css" href="${pageContext.request.contextPath}/resources/cron/jquery-cron.css" rel="stylesheet" />
-     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/gentleSelect/jquery-gentleSelect-min.js"></script>
-     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/cron/jquery-cron.js"></script>
-
-
-    <!--common script for all pages-->
-    <script src="resources/js/common-scripts.js"></script>
   </head>
 
   <body>
@@ -79,9 +55,18 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-    
-       <tiles:insertAttribute name="body" />
-      <!-- /MAIN CONTENT -->
+      <section id="main-content">
+          <section class="wrapper site-min-height">
+          	<h3><i class="fa fa-angle-right"></i> Blank Page</h3>
+          	<div class="row mt">
+          		<div class="col-lg-12">
+<!--          		<p>Place your content here.</p>-->
+                        <tiles:insertAttribute name="body" />
+          		</div>
+          	</div>
+			
+		</section><! --/wrapper -->
+      </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
       <!--footer start-->
@@ -89,15 +74,29 @@
       <!--footer end-->
   </section>
 
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.scrollTo.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="resources/js/common-scripts.js"></script>
 
     <!--script for this page-->
     
- 
-  
-  
-        
-        
-        
+  <script>
+      //custom select box
+
+      $(function(){
+          $('select.styled').customSelect();
+      });
+
+  </script>
 
   </body>
 </html>

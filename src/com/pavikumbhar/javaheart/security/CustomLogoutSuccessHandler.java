@@ -42,7 +42,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
          */
         request.getSession().invalidate();
         response.setStatus(HttpServletResponse.SC_OK);
-//redirect to login
+        //redirect to login
         response.sendRedirect("login");
         List<SessionInformation> userSessions = sessionRegistry.getAllSessions(session, true);
 
